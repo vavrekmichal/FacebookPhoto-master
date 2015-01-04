@@ -11,10 +11,10 @@ namespace FacebookPicture {
         private Dictionary<Friend, List<Friend>> data;
         private Dictionary<string, Friend> friends;
 
-        private Palette palette;
+        private IPalette palette;
         private Bitmap result;
 
-        public Picture(Palette palette) {
+        public Picture(IPalette palette) {
             this.palette = palette;
         }
 
@@ -65,15 +65,13 @@ namespace FacebookPicture {
 
             int pixelCount = procesingPicture.Width * procesingPicture.Height;
             int counted = 0;
-            int rgb = 0;
 
             for (int i = 0; i < procesingPicture.Width; i++) {
                 for (int j = 0; j < procesingPicture.Height; j++) {
 
                     Color pixel = procesingPicture.GetPixel(i, j);
 
-                    rgb = (int)((pixel.R + pixel.G + pixel.B) / 3);
-                    Image img = palette.GetPuzzle(rgb);
+                    Image img = palette.GetPuzzle(pixel);
                     g.DrawImage(img, new Point(i * EngineSettings.PhotoSize, j * EngineSettings.PhotoSize));
                     worker.ReportProgress(++counted * 100/ pixelCount);
                 }

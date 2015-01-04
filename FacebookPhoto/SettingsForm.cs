@@ -12,7 +12,7 @@ namespace FacebookPicture {
     public partial class SettingsForm : Form {
         public SettingsForm() {
             InitializeComponent();
-            if (File.Exists("cache/" + Config.USER_ID + "/graph.jpg")) {
+            if (File.Exists("cache/" + Config.USER_ID + "/picture.jpg")) {
                 ButtonShowLast.Enabled = true;
             }
 
@@ -60,7 +60,7 @@ namespace FacebookPicture {
                 if (Directory.Exists(path)) {
                     foreach (string file in Directory.GetFiles(path)) {
                         try {
-                            File.Delete(path+ "/" + file);
+                            File.Delete( file);
 
                         } catch { }
                     }
@@ -120,6 +120,18 @@ namespace FacebookPicture {
                 fileLocation.Text = ofd.FileName;
                 
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e) {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 0;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 1;
         }
     }
 }

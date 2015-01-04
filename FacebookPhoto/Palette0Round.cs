@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Text;
 
 namespace FacebookPicture {
-    class Palette: IBlackWhitePalette{
+    class Palette0Round : IBlackWhitePalette {
 
-        public Palette(string dir, FriendList list, BackgroundWorker worker) {
+        public Palette0Round(string dir, FriendList list, BackgroundWorker worker) {
             int i = 0;
             foreach (Friend friend in list) {
                 if (worker != null && worker.CancellationPending) {
@@ -25,6 +23,7 @@ namespace FacebookPicture {
             }
         }
 
+
         public override Image GetPuzzle(Color color) { //neni void
             int pixelColor = (int)((color.R + color.G + color.B) / 3);
             if (palleteSet.ContainsKey(pixelColor)) {
@@ -32,16 +31,7 @@ namespace FacebookPicture {
                 palleteSet[pixelColor].Enqueue(temp);
                 return new Bitmap(temp);
             } else {
-                if (palleteSet.ContainsKey(pixelColor - 1)) {
-                    string temp = palleteSet[pixelColor - 1].Dequeue();
-                    palleteSet[pixelColor - 1].Enqueue(temp);
-                    return new Bitmap(temp);
-                }
-                if (palleteSet.ContainsKey(pixelColor + 1)) {
-                    string temp = palleteSet[pixelColor + 1].Dequeue();
-                    palleteSet[pixelColor + 1].Enqueue(temp);
-                    return new Bitmap(temp);
-                }
+                
                 Bitmap img = new Bitmap(EngineSettings.PhotoSize, EngineSettings.PhotoSize);
 
                 for (int i = 0; i < EngineSettings.PhotoSize; i++) {
@@ -54,6 +44,5 @@ namespace FacebookPicture {
                 return img;
             }
         }
-
     }
 }

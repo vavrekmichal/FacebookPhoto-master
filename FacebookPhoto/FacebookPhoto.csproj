@@ -84,6 +84,8 @@
     <Compile Include="Config.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="EngineSettings.cs" />
+    <Compile Include="IIBlackWhitePalette.cs" />
+    <Compile Include="IPalette.cs" />
     <Compile Include="LoaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +102,8 @@
     </Compile>
     <Compile Include="Friend.cs" />
     <Compile Include="Palette.cs" />
+    <Compile Include="Palette0Round.cs" />
+    <Compile Include="PaletteManager.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="PictureViewerForm.cs">
       <SubType>Form</SubType>

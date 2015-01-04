@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace FacebookPicture {
-    public static class PaletteManager {
+    static class PaletteManager {
         private static int paletteID = 0;
 
 
@@ -15,11 +15,14 @@ namespace FacebookPicture {
             }
         }
 
-        public static Palette GetPalette(string dir, FriendList friends, BackgroundWorker worker) {
-            Palette p;
+        public static IPalette GetPalette(string dir, FriendList friends, BackgroundWorker worker) {
+            IPalette p;
             switch (paletteID) {
                 case 0: 
                     p = new Palette(dir, friends, worker);
+                    break;
+                case 1:
+                    p = new Palette0Round(dir, friends, worker);
                     break;
                 default:
                     p = new Palette(dir, friends, worker);

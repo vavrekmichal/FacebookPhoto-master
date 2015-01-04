@@ -105,7 +105,9 @@ namespace FacebookPicture {
                                                                    .SelectToken("data")
                                                                    .SelectToken("url")
                                                                    .ToString();
-            DownloadFile(myUrl, dir + "/" + Config.USER_ID + ".jpg");
+            try {
+                DownloadFile(myUrl, dir + "/" + Config.USER_ID + ".jpg");
+            } catch { } // owner photo could be locked be app
 
             if (worker != null) {
                 worker.ReportProgress((++i * 100) / friends.Count, i);
