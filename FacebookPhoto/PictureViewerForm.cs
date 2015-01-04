@@ -18,8 +18,8 @@ namespace FacebookPicture {
 			InitializeComponent();
 			
 			// we set the initial window size
-			Width = Math.Min(1100, GraphSettings.ImageWidth);
-			Height = Math.Min(700, GraphSettings.ImageHeight);
+			Width = Math.Min(1100, EngineSettings.ImageWidth);
+			Height = Math.Min(700, EngineSettings.ImageHeight);
 
 			ResizeImageToWindow();
 
@@ -74,18 +74,18 @@ namespace FacebookPicture {
 			double modifier = 1.0 + 1.0 / ((double) e.Delta / 30.0);
 			zoom *= modifier;
 
-			if(GraphSettings.ImageWidth * zoom <= Width && zoom < 1)
-				zoom = (double) PictureBoxMain.Width / (double) GraphSettings.ImageWidth;
+			if(EngineSettings.ImageWidth * zoom <= Width && zoom < 1)
+				zoom = (double) PictureBoxMain.Width / (double) EngineSettings.ImageWidth;
 
 			int lastW = PictureBoxMain.Width;
 			int lastH = PictureBoxMain.Height;
 
 			PictureBoxMain.SuspendLayout();
-			PictureBoxMain.Width = (int) (GraphSettings.ImageWidth * zoom);
-			PictureBoxMain.Height = (int) (GraphSettings.ImageHeight * zoom);
+			PictureBoxMain.Width = (int) (EngineSettings.ImageWidth * zoom);
+			PictureBoxMain.Height = (int) (EngineSettings.ImageHeight * zoom);
 
-			PictureBoxMain.Left = (int) (PictureBoxMain.Location.X + (lastW - GraphSettings.ImageWidth * zoom) / 2);
-			PictureBoxMain.Top = (int) (PictureBoxMain.Location.Y + (lastH - GraphSettings.ImageHeight * zoom) / 2);
+			PictureBoxMain.Left = (int) (PictureBoxMain.Location.X + (lastW - EngineSettings.ImageWidth * zoom) / 2);
+			PictureBoxMain.Top = (int) (PictureBoxMain.Location.Y + (lastH - EngineSettings.ImageHeight * zoom) / 2);
 			PictureBoxMain.ResumeLayout();
 		}
 
@@ -95,18 +95,18 @@ namespace FacebookPicture {
 		/// </summary>
 		private void ResizeImageToWindow() {
 			// and scale it to the ratio of the image (scale the larger side)
-			if(GraphSettings.ImageWidth > GraphSettings.ImageHeight) {
-				Height = (int) (Width * ((double) GraphSettings.ImageHeight / (double) GraphSettings.ImageWidth));
+			if(EngineSettings.ImageWidth > EngineSettings.ImageHeight) {
+				Height = (int) (Width * ((double) EngineSettings.ImageHeight / (double) EngineSettings.ImageWidth));
 				PictureBoxMain.Width = Width;
 				PictureBoxMain.Height = Height;
 			} else {
-				Width = (int) (Height * ((double) GraphSettings.ImageWidth / (double) GraphSettings.ImageHeight));
+				Width = (int) (Height * ((double) EngineSettings.ImageWidth / (double) EngineSettings.ImageHeight));
 				PictureBoxMain.Width = Width;
 				PictureBoxMain.Height = Height;
 			}
 
 			// we count the initial zoom, so the image fits right in the window
-			zoom = (double) PictureBoxMain.Width / (double) GraphSettings.ImageWidth;
+			zoom = (double) PictureBoxMain.Width / (double) EngineSettings.ImageWidth;
 		}
 
 

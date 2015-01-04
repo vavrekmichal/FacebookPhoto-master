@@ -15,13 +15,6 @@ namespace FacebookPicture {
 		public string id;
 		#pragma warning restore 0649
 
-		[JsonIgnore]
-		public Point coordinates;
-		[JsonIgnore]
-		public PointF velocity = new PointF();
-		[JsonIgnore]
-		public PointF force = new PointF();
-
 		public override string ToString() {
 			return id;
 		}

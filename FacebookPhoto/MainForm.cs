@@ -12,8 +12,6 @@ namespace FacebookPicture {
 				ButtonShowLast.Enabled = true;
 			}
 
-			TrackBarImageWidth.Value = GraphSettings.ImageWidth;
-			TrackBarImageHeight.Value = GraphSettings.ImageHeight;
 			TrackBarPhotoSize.Value = GraphSettings.PhotoSize;
 
 			UpdateLabels();
@@ -56,13 +54,11 @@ namespace FacebookPicture {
 		// Form change handlers:
 
 		private void TrackBarImageWidth_ValueChanged(object sender, EventArgs e) {
-			GraphSettings.ImageWidth = TrackBarImageWidth.Value;
-			UpdateLabels();
+
 		}
 
 		private void TrackBarImageHeight_ValueChanged(object sender, EventArgs e) {
-			GraphSettings.ImageHeight = TrackBarImageHeight.Value;
-			UpdateLabels();
+
 		}
 
 		private void TrackBarPhotoSize_ValueChanged(object sender, EventArgs e) {
@@ -75,9 +71,7 @@ namespace FacebookPicture {
 		/// Config values -> FormLabels
 		/// </summary>
 		private void UpdateLabels() {
-			LabelImageWidth.Text = GraphSettings.ImageWidth + "px";
-			LabelImageHeight.Text = GraphSettings.ImageHeight + "px";
-			LabelPhotoSize.Text = GraphSettings.PhotoSize + "px";
+			
 		}
 
 		private void ButtonShowLast_Click(object sender, EventArgs e) {
@@ -90,13 +84,7 @@ namespace FacebookPicture {
 		}
 
 		private void CheckBoxAutoSize_CheckedChanged(object sender, EventArgs e) {
-			GraphSettings.AutoSize = CheckBoxAutoSize.Checked;
 
-			if(CheckBoxAutoSize.Checked) {
-				TrackBarPhotoSize.Enabled = false;
-			} else {
-				TrackBarPhotoSize.Enabled = true;
-			}
 		}
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -105,6 +93,18 @@ namespace FacebookPicture {
         }
 
         private void TrackBarQuality_Scroll(object sender, EventArgs e) {
+
+        }
+
+        private void TrackBarPhotoSize_Scroll(object sender, EventArgs e) {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) {
+
+        }
+
+        private void CheckBoxFriendInfo_CheckedChanged(object sender, EventArgs e) {
 
         }
 	}

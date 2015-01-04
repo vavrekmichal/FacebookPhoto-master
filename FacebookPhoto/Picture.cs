@@ -11,8 +11,13 @@ namespace FacebookPicture {
         private Dictionary<Friend, List<Friend>> data;
         private Dictionary<string, Friend> friends;
 
-        private Pallete pallete;
+        private Palette palette;
         private Bitmap result;
+
+        public Picture(Palette palette) {
+            this.palette = palette;
+        }
+
 
         /// <summary>
         /// Loads all mutual friends of all friends and saves them into a graph
@@ -41,20 +46,39 @@ namespace FacebookPicture {
                 }
 
                 // reporting progress
-                if (worker != null)
+                if (worker != null) {
                     worker.ReportProgress((++i * 100) / friends.Count, i);
+                }
             }
         }
 
 
-        public void CalcutePicture(string dir, FriendList list, BackgroundWorker worker = null) {
+        public void CalcutePicture(Bitmap procesingPicture, BackgroundWorker worker = null) {
 
-            pallete = new Pallete();
-            //Bitmap.From
-            Bitmap photo = new Bitmap(dir + "/photos/" + Config.USER_ID + ".jpg");
-            pallete.LoadPallete(dir, list);
+            if (worker != null) {
+                worker.ReportProgress(1);
+            }
 
-            result = photo;
+            result = new Bitmap(procesingPicture.Width * EngineSettings.PhotoSize, procesingPicture.Height * EngineSettings.PhotoSize);
+            Graphics g = Graphics.FromImage(result);
+            //g.DrawImage(
+
+            int pixelCount = procesingPicture.Width * procesingPicture.Height;
+            int counted = 0;
+            int rgb = 0;
+
+            for (int i = 0; i < procesingPicture.Width; i++) {
+                for (int j = 0; j < procesingPicture.Height; j++) {
+
+                    Color pixel = procesingPicture.GetPixel(i, j);
+
+                    rgb = (int)((pixel.R + pixel.G + pixel.B) / 3);
+                    Image img = palette.GetPuzzle(rgb);
+                    g.DrawImage(img, new Point(i * EngineSettings.PhotoSize, j * EngineSettings.PhotoSize));
+                    worker.ReportProgress(++counted * 100/ pixelCount);
+                }
+            }
+            g.Dispose();
 
             // reporting success
             if (worker != null) {
@@ -63,9 +87,7 @@ namespace FacebookPicture {
         }
 
         public Bitmap GetPicture(BackgroundWorker worker = null) {
-            if (worker != null) {
-                worker.ReportProgress(100);
-            }
+
             return result;
         }
     }

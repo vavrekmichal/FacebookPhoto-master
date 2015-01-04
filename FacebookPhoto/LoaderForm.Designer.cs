@@ -110,7 +110,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoaderForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Generating graph...";
+            this.Text = "Computing...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoaderForm_FormClosing);
             this.Load += new System.EventHandler(this.LoaderForm_Load);
             this.ResumeLayout(false);

@@ -50,7 +50,7 @@
             this.logo.ImageLocation = "";
             this.logo.Location = new System.Drawing.Point(0, 0);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(665, 349);
+            this.logo.Size = new System.Drawing.Size(633, 568);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.logo.TabIndex = 1;
             this.logo.TabStop = false;
@@ -59,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 349);
+            this.ClientSize = new System.Drawing.Size(633, 568);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.logo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

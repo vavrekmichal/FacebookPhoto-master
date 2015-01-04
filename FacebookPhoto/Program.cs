@@ -34,7 +34,7 @@ namespace FacebookPicture {
 			Config.USER_NAME = user.name;
 			
 			// Firing the main window (with settings)
-			Application.Run(new MainForm());
+			Application.Run(new SettingsForm());
 		}
 	}
 }

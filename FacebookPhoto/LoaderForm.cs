@@ -18,10 +18,11 @@ namespace FacebookPicture {
 
 	public partial class LoaderForm : Form {
 		private Stage stage;
+        private string filePath;
 
-		public LoaderForm() {
+		public LoaderForm(string file) {
 			InitializeComponent();
-
+            filePath = file;
 			stage = Stage.UserInfo;
 
 			// setting up the starting loader screen
@@ -50,7 +51,7 @@ namespace FacebookPicture {
 			e.Result = false;
 
 			try {
-				Generator.GenerateGraph(backgroundLoader);
+				Generator.GenerateGraph(filePath, backgroundLoader);
 			} catch(InterruptedException) {
 				e.Result = false;
 				return;
@@ -81,7 +82,7 @@ namespace FacebookPicture {
 
 				// This stage loads users friendlist, it is a short one.
 				case Stage.UserInfo:
-					LabelOperation.Text = "Getting friend information...";
+                    LabelOperation.Text = "Downloading profile pictures...";
 
 					LabelOverallStage.Text = "1/5";
 					LabelOperationPercentage.Text = "0/" + e.UserState;
@@ -98,7 +99,7 @@ namespace FacebookPicture {
 					if(e.ProgressPercentage == 100) { // stage completed
 						stage = Stage.ProfilePictures;
 
-						LabelOperation.Text = "Downloading profile pictures...";
+                        LabelOperation.Text = "Preparing palette from pictures...";
 
 						LabelOverallStage.Text = "2/5";
 						LabelOperationPercentage.Text = "0" + LabelOperationPercentage.Text.Substring(LabelOperationPercentage.Text.IndexOf('/'));
@@ -117,7 +118,7 @@ namespace FacebookPicture {
 					if(e.ProgressPercentage == 100) { // stage completed
 						stage = Stage.Calculating;
 
-						LabelOperation.Text = "Calculating graph...";
+                        LabelOperation.Text = "Calculating...";
 						LabelOverallStage.Text = "3/5";
 						LabelOperationPercentage.Text = "0%";
 						ProgressBarOperation.Value = 0;
@@ -137,7 +138,7 @@ namespace FacebookPicture {
 					if(e.ProgressPercentage == 100) { // stage completed
 						stage = Stage.Drawing;
 
-						LabelOperation.Text = "Drawing graph...";
+                        LabelOperation.Text = "Calculating picture...";
 
 						LabelOverallStage.Text = "4/5";
 						LabelOperationPercentage.Text = "0%";
@@ -160,9 +161,11 @@ namespace FacebookPicture {
 						LabelOverallStage.Text = "5/5";
 						
 						// at the end of the stage, we show the result window
-						PictureViewerForm pvf = new PictureViewerForm((string) e.UserState);
-						pvf.ShowDialog();
-						((IDisposable) pvf).Dispose();
+                        if (e.UserState != null) {
+						    PictureViewerForm pvf = new PictureViewerForm((string) e.UserState);
+						    pvf.ShowDialog();
+						    ((IDisposable) pvf).Dispose();
+                        }
 
 					} else {
 						LabelOperationPercentage.Text = e.ProgressPercentage + "%";

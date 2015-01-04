@@ -3,7 +3,7 @@
 	/// Holds info about user and makes easy access to defined constants in resources
 	/// </summary>
 	static class Config {
-		// @todo smazat muj token
+
 		static public string ACCESS_TOKEN;
 		static public string USER_ID, USER_NAME;
 
