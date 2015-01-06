@@ -133,5 +133,13 @@ namespace FacebookPicture {
         private void radioButton2_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 1;
         }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 2;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 3;
+        }
     }
 }

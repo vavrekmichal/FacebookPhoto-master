@@ -24,6 +24,12 @@ namespace FacebookPicture {
                 case 1:
                     p = new Palette0Round(dir, friends, worker);
                     break;
+                case 2:
+                    p = new Palette2Round(dir, friends, worker);
+                    break;
+                case 3:
+                    p = new PaletteRGB(dir, friends, worker);
+                    break;
                 default:
                     p = new Palette(dir, friends, worker);
                     break;

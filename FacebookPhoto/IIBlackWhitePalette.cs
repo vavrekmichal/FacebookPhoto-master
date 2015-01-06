@@ -11,8 +11,7 @@ namespace FacebookPicture {
 
         protected Dictionary<int, Queue<string>> palleteSet = new Dictionary<int, Queue<string>>();
 
-
-        public Image LoadFriendPicture(string imgName) {
+        public void LoadFriendPicture(string imgName) {
             int rgb;
             long rgbCount = 0;
             var img = new Bitmap(imgName + ".jpg");
@@ -37,8 +36,6 @@ namespace FacebookPicture {
                 bwImg.Save(imgName + "bw.jpg", ImageFormat.Jpeg);
             } catch { } // could be locked by app
             palleteSet[dived].Enqueue(imgName + "bw.jpg");
-            return bwImg;
-
         }
     }
 }

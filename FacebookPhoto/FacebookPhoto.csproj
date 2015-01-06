@@ -103,7 +103,9 @@
     <Compile Include="Friend.cs" />
     <Compile Include="Palette.cs" />
     <Compile Include="Palette0Round.cs" />
+    <Compile Include="Palette2Roundcs.cs" />
     <Compile Include="PaletteManager.cs" />
+    <Compile Include="PaletteRGB.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="PictureViewerForm.cs">
       <SubType>Form</SubType>

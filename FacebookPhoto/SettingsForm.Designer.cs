@@ -25,6 +25,10 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.GroupBoxMain = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.fileLocation = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.localFile = new System.Windows.Forms.RadioButton();
@@ -34,13 +38,11 @@
             this.ButtonGenerate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ButtonShowLast = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.GroupBoxMain.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBoxMain
@@ -54,15 +56,66 @@
             this.GroupBoxMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.GroupBoxMain.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxMain.Name = "GroupBoxMain";
-            this.GroupBoxMain.Size = new System.Drawing.Size(331, 408);
+            this.GroupBoxMain.Size = new System.Drawing.Size(331, 248);
             this.GroupBoxMain.TabIndex = 3;
             this.GroupBoxMain.TabStop = false;
             this.GroupBoxMain.Text = "Settings";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton4);
+            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 126);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(142, 108);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Palette";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(14, 19);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(94, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "+/-2 Rounding";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(14, 65);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(86, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "no Rounding";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(14, 42);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(88, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "+/- Rounding";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // fileLocation
             // 
             this.fileLocation.Enabled = false;
-            this.fileLocation.Location = new System.Drawing.Point(98, 193);
+            this.fileLocation.Location = new System.Drawing.Point(93, 84);
             this.fileLocation.Name = "fileLocation";
             this.fileLocation.Size = new System.Drawing.Size(223, 20);
             this.fileLocation.TabIndex = 17;
@@ -70,7 +123,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(17, 190);
+            this.button1.Location = new System.Drawing.Point(12, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
@@ -81,7 +134,7 @@
             // localFile
             // 
             this.localFile.AutoSize = true;
-            this.localFile.Location = new System.Drawing.Point(17, 167);
+            this.localFile.Location = new System.Drawing.Point(12, 58);
             this.localFile.Name = "localFile";
             this.localFile.Size = new System.Drawing.Size(67, 17);
             this.localFile.TabIndex = 15;
@@ -93,7 +146,7 @@
             // 
             this.InputChannel.AutoSize = true;
             this.InputChannel.Checked = true;
-            this.InputChannel.Location = new System.Drawing.Point(17, 128);
+            this.InputChannel.Location = new System.Drawing.Point(12, 19);
             this.InputChannel.Name = "InputChannel";
             this.InputChannel.Size = new System.Drawing.Size(84, 17);
             this.InputChannel.TabIndex = 14;
@@ -105,9 +158,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.CheckBoxPhotos);
-            this.groupBox2.Location = new System.Drawing.Point(165, 325);
+            this.groupBox2.Location = new System.Drawing.Point(168, 126);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(148, 68);
+            this.groupBox2.Size = new System.Drawing.Size(148, 48);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Saved data:";
@@ -117,7 +170,7 @@
             this.CheckBoxPhotos.AutoSize = true;
             this.CheckBoxPhotos.Checked = true;
             this.CheckBoxPhotos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPhotos.Location = new System.Drawing.Point(7, 45);
+            this.CheckBoxPhotos.Location = new System.Drawing.Point(6, 20);
             this.CheckBoxPhotos.Name = "CheckBoxPhotos";
             this.CheckBoxPhotos.Size = new System.Drawing.Size(129, 17);
             this.CheckBoxPhotos.TabIndex = 1;
@@ -140,9 +193,9 @@
             this.panel1.Controls.Add(this.ButtonShowLast);
             this.panel1.Controls.Add(this.ButtonGenerate);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 418);
+            this.panel1.Location = new System.Drawing.Point(0, 262);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 55);
+            this.panel1.Size = new System.Drawing.Size(331, 61);
             this.panel1.TabIndex = 4;
             // 
             // ButtonShowLast
@@ -156,48 +209,23 @@
             this.ButtonShowLast.UseVisualStyleBackColor = true;
             this.ButtonShowLast.Click += new System.EventHandler(this.ButtonShowLast_Click_1);
             // 
-            // groupBox1
+            // radioButton4
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(17, 285);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(142, 108);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Palette";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(12, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(88, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "+/- Rounding";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(12, 43);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(86, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "no Rounding";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(14, 88);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(86, 17);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "RGB nearest";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 473);
+            this.ClientSize = new System.Drawing.Size(331, 323);
             this.Controls.Add(this.GroupBoxMain);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -205,11 +233,11 @@
             this.Text = "SettingsForm";
             this.GroupBoxMain.ResumeLayout(false);
             this.GroupBoxMain.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -229,5 +257,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }
