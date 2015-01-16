@@ -39,7 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -82,6 +82,9 @@
     <Reference Include="SCD">
       <HintPath>F:\ChromeDownload\Mpeg(dll)\SCD.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleRnd">
+      <HintPath>F:\ChromeDownload\SimpleRnd\SimpleRnd\SimpleRnd\bin\Debug\SimpleRnd.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -95,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLDPalette.cs" />
+    <Compile Include="DCDPalette.cs" />
+    <Compile Include="Descriptros\CEDD.cs" />
+    <Compile Include="Descriptros\CEDDQuant.cs" />
+    <Compile Include="Descriptros\Fuzzy10Bin.cs" />
+    <Compile Include="Descriptros\Fuzzy24Bin.cs" />
+    <Compile Include="Descriptros\RGB2HSV.cs" />
     <Compile Include="EHDPalette.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Generator.cs" />
@@ -140,6 +149,7 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CEDDPalette.cs" />
     <EmbeddedResource Include="LoaderForm.resx">
       <DependentUpon>LoaderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,9 +223,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Descriptros\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

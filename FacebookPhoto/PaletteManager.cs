@@ -39,6 +39,12 @@ namespace FacebookPicture {
                 case 6:
                     p = new CLDPalette(dir, friends, worker);
                     break;
+                case 7:
+                    p = new DCDPalette(dir, friends, worker);
+                    break;
+                case 8:
+                    p = new CEDDPalette(dir, friends, worker);
+                    break;
                 default:
                     p = new Palette(dir, friends, worker);
                     break;

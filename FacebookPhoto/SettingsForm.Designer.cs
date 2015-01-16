@@ -55,6 +55,9 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.GroupBoxMain.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -144,6 +147,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton10);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.radioButton9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox3);
@@ -161,7 +167,7 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(12, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(337, 199);
+            this.groupBox1.Size = new System.Drawing.Size(474, 199);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Palette";
@@ -353,9 +359,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(130, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(117, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "MPEG7";
+            this.label2.Text = "MPEG7 Descriptros";
             // 
             // label3
             // 
@@ -430,6 +436,41 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Bitplan";
             // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Enabled = false;
+            this.radioButton9.Location = new System.Drawing.Point(133, 162);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(99, 17);
+            this.radioButton9.TabIndex = 15;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.Text = "DCD Descriptor";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(279, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(135, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "SimpleRnd Descriptors";
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(282, 35);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(106, 17);
+            this.radioButton10.TabIndex = 17;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "CEDD Descriptor";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,5 +528,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton radioButton10;
     }
 }

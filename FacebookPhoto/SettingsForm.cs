@@ -204,5 +204,13 @@ namespace FacebookPicture {
             EngineSettings.SCDBitplan = bitplan;
             textBox3.Text = EngineSettings.SCDBitplan.ToString();
         }
+
+        private void radioButton9_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 7;
+        }
+
+        private void radioButton10_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 8;
+        }
     }
 }

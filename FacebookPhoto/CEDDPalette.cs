@@ -8,25 +8,22 @@ using System.Security;
 using System.Text;
 
 namespace FacebookPicture {
-    class CLDPalette : IPalette {
+    class CEDDPalette :IPalette{
 
-        Dictionary<int[], Queue<String>> palette = new Dictionary<int[], Queue<String>>();
+        Dictionary<double[], Queue<String>> palette = new Dictionary<double[], Queue<String>>();
 
-
-        public CLDPalette(string dir, FriendList list, BackgroundWorker worker) {
+        public CEDDPalette(string dir, FriendList list, BackgroundWorker worker) {
 
             int i = 0;
             foreach (Friend friend in list) {
                 if (worker != null && worker.CancellationPending) {
                     throw new InterruptedException();
                 }
-                CLD_Descriptor cld = new CLD_Descriptor();
-
+                SimpleRnd.CEDD cedd = new SimpleRnd.CEDD();
+               
                 var img = new Bitmap(dir + "/photos/" + friend.id + "Large.jpg");
-                int[] descriptor = null;
 
-
-                descriptor = DosecurityCritical(cld, img);
+                double[] descriptor = DosecurityCritical(cedd, img);
 
                 if (descriptor != null) {
                     if (!palette.ContainsKey(descriptor)) {
@@ -45,37 +42,21 @@ namespace FacebookPicture {
 
         [HandleProcessCorruptedStateExceptions]
         [SecurityCritical]
-        private int [] DosecurityCritical(CLD_Descriptor cld, Bitmap img) {
+        private double[] DosecurityCritical(SimpleRnd.CEDD cedd, Bitmap img) {
             try {
-                cld.Apply(img);
-                int[] Y = new int[64];
-                Y = cld.YCoeff;
-
-                int[] CB = new int[64];
-                CB = cld.CbCoeff;
-
-                int[] CR = new int[64];
-                CR = cld.CrCoeff;
-
-                int [] result =  new int[Y.Length + CB.Length + CR.Length];
-                Y.CopyTo(result, 0);
-                CB.CopyTo(result, Y.Length);
-                CR.CopyTo(result, Y.Length + CB.Length);
-                return result;
+               // List<double[]> temp = locate.extract(img,600);
+                double [] temp = cedd.Apply(img);
+                return temp;
             } catch (Exception) {
                 return null;
             }
         }
 
-        public System.Drawing.Image GetPuzzle(System.Drawing.Bitmap image) {
-            CLD_Descriptor cld = new CLD_Descriptor();
-
-            int[] descriptor = DosecurityCritical(cld, image);
-            // if descrpitor is null?
+        private double[] GetNearestDescriptor(double[] descriptor) {
             double distance = Double.MaxValue;
-            //throw new NotImplementedException();
-            int[] nearest = new int[0];
-            foreach (int[] desc in palette.Keys) {
+
+            double[] nearest = null;
+            foreach (double[] desc in palette.Keys) {
                 double temp = 0.0;
                 double dot = 0.0d;
                 double mag1 = 0.0d;
@@ -100,6 +81,16 @@ namespace FacebookPicture {
                     break;
                 }
             }
+            return nearest;
+        }
+
+        public System.Drawing.Image GetPuzzle(System.Drawing.Bitmap image) {
+            SimpleRnd.CEDD cedd = new SimpleRnd.CEDD();
+
+            double[] descriptor = DosecurityCritical(cedd, image);
+
+            double[] nearest = GetNearestDescriptor(descriptor);
+            
             string tempName = palette[nearest].Dequeue();
             palette[nearest].Enqueue(tempName);
             return new Bitmap(tempName);
