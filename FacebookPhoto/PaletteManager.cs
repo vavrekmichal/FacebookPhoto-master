@@ -30,6 +30,15 @@ namespace FacebookPicture {
                 case 3:
                     p = new PaletteRGB(dir, friends, worker);
                     break;
+                case 4:
+                    p = new EHDPalette(dir, friends, worker);
+                    break;
+                case 5:
+                    p = new SCDPalette(dir, friends, worker);
+                    break;
+                case 6:
+                    p = new CLDPalette(dir, friends, worker);
+                    break;
                 default:
                     p = new Palette(dir, friends, worker);
                     break;

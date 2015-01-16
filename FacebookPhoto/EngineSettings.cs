@@ -18,7 +18,68 @@ namespace FacebookPicture {
 		private static int _imageWidth = 3072;
 		private static int _imageHeight = 3072;
 		private static int _photoSize = 50;
+        private static int _pixelPrecision = 5;
+        
+        // EDH
+        private static int ehdTreshold = 11;
+        
+        // SCD
+        private static int scdCoeficients = 256;
+        private static int scdBitplan = 0;
 
+        public static int SCDCoeficients {
+            get { return scdCoeficients; }
+            set {
+                if (value < 1) {
+                    value = 1;
+                }
+                if (value > 512) {
+                    value = 512;
+                }
+                scdCoeficients = value;
+            }
+        }
+
+        public static int SCDBitplan {
+            get { return scdBitplan; }
+            set {
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value > 30) {
+                    value = 30;
+                }
+                scdBitplan = value;
+            }
+        }
+
+        public static int EHDTreshold {
+            get { return ehdTreshold; }
+            set {
+                if (value < 1) {
+                    value = 1;
+                }
+                if (value > 50) {
+                    value = 50;
+                }
+                ehdTreshold = value;
+            }
+        }
+
+        public static int PixelPrecision {
+            get {
+                return _pixelPrecision;
+            }
+            set {
+                if(value<5){
+                    value = 5;
+                }
+                if (value > 50) {
+                    value = 50;
+                }
+                _pixelPrecision = value;
+            }
+        }
 
 		/// <summary>
 		/// Final image width in pixels.
@@ -29,12 +90,13 @@ namespace FacebookPicture {
 			}
 
 			set {
-				if(value < 512)
-					value = 512;
+                if (value < 512) {
+                    value = 512;
+                }
 
-				if(value > 4096)
-					value = 4096;
-
+                if (value > 4096) {
+                    value = 4096;
+                }
 				_imageWidth = value;
 			}
 		}

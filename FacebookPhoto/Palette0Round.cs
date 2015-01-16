@@ -24,7 +24,8 @@ namespace FacebookPicture {
         }
 
 
-        public override Image GetPuzzle(Color color) { //neni void
+        public override Image GetPuzzle(Bitmap image) { //neni void
+            Color color = TransformImageToColor(image);
             int pixelColor = (int)((color.R + color.G + color.B) / 3);
             if (palleteSet.ContainsKey(pixelColor)) {
                 string temp = palleteSet[pixelColor].Dequeue();

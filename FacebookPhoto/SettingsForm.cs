@@ -40,7 +40,11 @@ namespace FacebookPicture {
                     try {
                         EngineSettings.ImageWidth = img.Width; // boundery control
                         EngineSettings.ImageHeight = img.Height;
-                        var img2 = new Bitmap(img.Width * EngineSettings.PhotoSize, img.Height * EngineSettings.PhotoSize);
+                        if (pixelPrecisionOprtion.Checked) {
+                            var img2 = new Bitmap(img.Width * EngineSettings.PhotoSize, img.Height * EngineSettings.PhotoSize);
+                        } else {
+                            var img2 = new Bitmap(img.Width , img.Height );
+                        }
                     } catch (ArgumentException) {
                         fileLocation.Text = "";
                         MessageBox.Show("Picture from " + ofd.FileName + " will be too huge. Sorry");
@@ -48,9 +52,10 @@ namespace FacebookPicture {
                     }
                 }
             }
-            
+
             if (InputChannel.Checked) {
-                picture = "cache/" + Config.USER_ID + "/photos/" + Config.USER_ID + ".jpg";
+                string sufixImg = pixelPrecisionOprtion.Checked ? ".jpg" : "Large.jpg";
+                picture = "cache/" + Config.USER_ID + "/photos/" + Config.USER_ID + sufixImg;
             }
 
             // checks if friend photos are to be redownloaded == deletes the photos/ files
@@ -140,6 +145,64 @@ namespace FacebookPicture {
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 3;
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e) {
+            PictureManager.PictureID = 0;
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e) {
+            PictureManager.PictureID = 1;
+            trackBar1.Enabled = radioButton6.Checked;
+            label1.Enabled = radioButton6.Checked;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e) {
+            EngineSettings.PixelPrecision = trackBar1.Value *5;
+            label1.Text = EngineSettings.PixelPrecision + "px";
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void radioButton5_CheckedChanged_1(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 4;
+            label4.Enabled = radioButton5.Checked;
+            textBox1.Enabled = radioButton5.Checked;
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 5;
+            label5.Enabled = radioButton7.Checked;
+            textBox2.Enabled = radioButton7.Checked;
+            label6.Enabled = radioButton7.Checked;
+            textBox3.Enabled = radioButton7.Checked;
+        }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e) {
+            PaletteManager.PaletteID = 6;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+            int treshold = 11;
+            Int32.TryParse( textBox1.Text,out treshold);
+            EngineSettings.EHDTreshold = treshold;
+            textBox1.Text = EngineSettings.EHDTreshold.ToString();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e) {
+            int coef = 256;
+            Int32.TryParse(textBox2.Text, out coef);
+            EngineSettings.SCDCoeficients = coef;
+            textBox2.Text = EngineSettings.SCDCoeficients.ToString();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e) {
+            int bitplan = 0;
+            Int32.TryParse(textBox3.Text, out bitplan);
+            EngineSettings.SCDBitplan = bitplan;
+            textBox3.Text = EngineSettings.SCDBitplan.ToString();
         }
     }
 }

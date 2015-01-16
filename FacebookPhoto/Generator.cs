@@ -50,8 +50,7 @@ namespace FacebookPicture {
 
             // load all mutual friends and the whole graph
             //Graph graph = new Graph(); //MVA
-            Picture picture = new Picture(PaletteManager.GetPalette(dir, friends, worker)); 
-            
+            IPicture picture = PictureManager.GetPicture(dir, friends, worker); 
 
             {
                 worker.ReportProgress(1); // download more pictures?
@@ -81,26 +80,28 @@ namespace FacebookPicture {
                     throw new InterruptedException();
                 }
 
-				if(File.Exists(dir + "/" + f.id + ".jpg")) {
-					if(worker != null)
-						worker.ReportProgress((++i * 100) / friends.Count, i);
-
-					continue;
+				if(!File.Exists(dir + "/" + f.id + ".jpg")) {
+                    string url = FBPictureAPI.GetData(f.id + "?fields=picture").SelectToken("picture")
+                                                                       .SelectToken("data")
+                                                                       .SelectToken("url")
+                                                                       .ToString();
+                    DownloadFile(url, dir + "/" + f.id + ".jpg");
 				}
-
-				string url = FBPictureAPI.GetData(f.id + "?fields=picture").SelectToken("picture")
-																	   .SelectToken("data")
-																	   .SelectToken("url")
-																	   .ToString();
-				DownloadFile(url, dir + "/" + f.id + ".jpg");
+                if (!File.Exists(dir + "/" + f.id + "Large.jpg")) {
+                    string url = FBPictureAPI.GetData(f.id + "?fields=picture.width(9999)").SelectToken("picture")
+                                                                       .SelectToken("data")
+                                                                       .SelectToken("url")
+                                                                       .ToString();
+                    DownloadFile(url, dir + "/" + f.id + "Large.jpg");
+                }
+				
 
                 if (worker != null) {
                     worker.ReportProgress((++i * 100) / friends.Count, i);
                 }
 			}
 
-            // my photo
-
+            // my photo small
             string myUrl = FBPictureAPI.GetData(Config.USER_ID + "?fields=picture").SelectToken("picture")
                                                                    .SelectToken("data")
                                                                    .SelectToken("url")
@@ -108,6 +109,16 @@ namespace FacebookPicture {
             try {
                 DownloadFile(myUrl, dir + "/" + Config.USER_ID + ".jpg");
             } catch { } // owner photo could be locked be app
+
+            // my photo large
+            myUrl = FBPictureAPI.GetData(Config.USER_ID + "?fields=picture.width(9999)").SelectToken("picture")
+                                                                   .SelectToken("data")
+                                                                   .SelectToken("url")
+                                                                   .ToString();
+            try {
+                DownloadFile(myUrl, dir + "/" + Config.USER_ID + "Large.jpg");
+            } catch { } // owner photo could be locked be app
+
 
             if (worker != null) {
                 worker.ReportProgress((++i * 100) / friends.Count, i);

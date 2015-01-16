@@ -54,7 +54,34 @@ namespace FacebookPicture {
             palleteSet[Tuple.Create<int, int, int>(divedR, divedG, divedB)].Enqueue(imgName + ".jpg");
         }
 
-        public Image GetPuzzle(Color color) { //neni void
+        protected Color TransformImageToColor(Bitmap img) {
+            long rCount = 0;
+            long gCount = 0;
+            long bCount = 0;
+
+            int pixelCount = img.Width * img.Height;
+
+            for (int i = 0; i < img.Width; i++) {
+                for (int j = 0; j < img.Height; j++) {
+
+                    Color pixel = img.GetPixel(i, j);
+
+                    rCount += pixel.R;
+                    gCount += pixel.G;
+                    bCount += pixel.B;
+                }
+            }
+            int divedR = (int)rCount / pixelCount;
+            int divedG = (int)gCount / pixelCount;
+            int divedB = (int)bCount / pixelCount;
+
+            Color c = Color.FromArgb(divedR, divedG, divedB);
+
+            return c;
+        }
+
+        public Image GetPuzzle(Bitmap image) { //neni void
+            Color color = TransformImageToColor(image);
             Tuple<int, int, int> pixelColor = Tuple.Create<int, int, int>(color.R, color.G, color.B);
 
             Tuple<int, int, int> nearest_color = Tuple.Create<int, int, int>(0, 0, 0);

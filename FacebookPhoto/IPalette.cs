@@ -6,7 +6,6 @@ using System.Text;
 
 namespace FacebookPicture {
     interface IPalette {
-        void LoadFriendPicture(string imgName);
-        Image GetPuzzle(Color pixelColor);
+        Image GetPuzzle(Bitmap image);
     }
 }
