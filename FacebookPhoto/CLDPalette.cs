@@ -22,7 +22,7 @@ namespace FacebookPicture {
                 }
                 CLD_Descriptor cld = new CLD_Descriptor();
 
-                var img = new Bitmap(dir + "/photos/" + friend.id + "Large.jpg");
+                var img = new Bitmap(dir + "/photos/" + friend.id + EngineSettings.TileSuffix);
                 int[] descriptor = null;
 
 

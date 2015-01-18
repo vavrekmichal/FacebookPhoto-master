@@ -19,6 +19,9 @@ namespace FacebookPicture {
 		private static int _imageHeight = 3072;
 		private static int _photoSize = 50;
         private static int _pixelPrecision = 5;
+
+        // tile size
+        private static string tileSuffix = "Large.jpg";
         
         // EDH
         private static int ehdTreshold = 11;
@@ -26,6 +29,18 @@ namespace FacebookPicture {
         // SCD
         private static int scdCoeficients = 256;
         private static int scdBitplan = 0;
+
+        public  static string TileSuffix {
+            get { return tileSuffix; }
+            set {
+                if (value == "Large.jpg" || value == ".jpg") {
+                    tileSuffix = value;
+                } else {
+                    tileSuffix = "Large.jpg";
+                }
+            }
+        }
+
 
         public static int SCDCoeficients {
             get { return scdCoeficients; }

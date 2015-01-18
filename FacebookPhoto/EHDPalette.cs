@@ -20,7 +20,7 @@ namespace FacebookPicture {
                     throw new InterruptedException();
                 }
                 EHD_Descriptor ehd = new EHD_Descriptor(11);
-                var img = new Bitmap(dir + "/photos/" + friend.id + "Large.jpg");
+                var img = new Bitmap(dir + "/photos/" + friend.id + EngineSettings.TileSuffix);
                 double[] descriptor = DosecurityCritical(ehd, img);
 
                 if (descriptor != null) {

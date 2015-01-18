@@ -20,7 +20,7 @@ namespace FacebookPicture {
                     throw new InterruptedException();
                 }
                 SCD_Descriptor scd = new SCD_Descriptor();
-                var img = new Bitmap(dir + "/photos/" + friend.id + "Large.jpg");
+                var img = new Bitmap(dir + "/photos/" + friend.id + EngineSettings.TileSuffix);
 
 
                 double[] descriptor = DosecurityCritical(scd, img);

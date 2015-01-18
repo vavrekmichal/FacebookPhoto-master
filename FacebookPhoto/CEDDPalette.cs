@@ -20,8 +20,8 @@ namespace FacebookPicture {
                     throw new InterruptedException();
                 }
                 SimpleRnd.CEDD cedd = new SimpleRnd.CEDD();
-               
-                var img = new Bitmap(dir + "/photos/" + friend.id + "Large.jpg");
+
+                var img = new Bitmap(dir + "/photos/" + friend.id + EngineSettings.TileSuffix);
 
                 double[] descriptor = DosecurityCritical(cedd, img);
 

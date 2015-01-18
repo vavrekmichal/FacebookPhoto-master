@@ -133,26 +133,32 @@ namespace FacebookPicture {
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 0;
+            groupBox4.Enabled = !radioButton1.Checked;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 1;
+            groupBox4.Enabled = !radioButton2.Checked;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 2;
+            groupBox4.Enabled = !radioButton3.Checked;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 3;
+            groupBox4.Enabled = !radioButton4.Checked;
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e) {
             PictureManager.PictureID = 0;
+            groupBox4.Enabled = radioButton5.Checked;
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e) {
             PictureManager.PictureID = 1;
+            groupBox4.Enabled = radioButton6.Checked;
             trackBar1.Enabled = radioButton6.Checked;
             label1.Enabled = radioButton6.Checked;
         }
@@ -168,12 +174,14 @@ namespace FacebookPicture {
 
         private void radioButton5_CheckedChanged_1(object sender, EventArgs e) {
             PaletteManager.PaletteID = 4;
+            groupBox4.Enabled = radioButton5.Checked;
             label4.Enabled = radioButton5.Checked;
             textBox1.Enabled = radioButton5.Checked;
         }
 
         private void radioButton7_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 5;
+            groupBox4.Enabled = radioButton7.Checked;
             label5.Enabled = radioButton7.Checked;
             textBox2.Enabled = radioButton7.Checked;
             label6.Enabled = radioButton7.Checked;
@@ -207,10 +215,20 @@ namespace FacebookPicture {
 
         private void radioButton9_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 7;
+            groupBox4.Enabled = radioButton9.Checked;
         }
 
         private void radioButton10_CheckedChanged(object sender, EventArgs e) {
             PaletteManager.PaletteID = 8;
+            groupBox4.Enabled = radioButton10.Checked;
+        }
+
+        private void radioButton11_CheckedChanged(object sender, EventArgs e) {
+            EngineSettings.TileSuffix = "Large.jpg";
+        }
+
+        private void radioButton12_CheckedChanged(object sender, EventArgs e) {
+            EngineSettings.TileSuffix = ".jpg";
         }
     }
 }
