@@ -68,7 +68,7 @@ namespace FacebookPicture {
                     mag2 += Math.Pow(descriptor[n], 2);
                 }
 
-                temp = dot / (Math.Sqrt(mag1) * Math.Sqrt(mag2));
+                temp =1.0 - ( dot / (Math.Sqrt(mag1) * Math.Sqrt(mag2)));
 
                 if (temp == 0.0) {
                     nearest = desc;
